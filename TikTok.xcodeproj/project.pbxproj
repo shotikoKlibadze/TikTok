@@ -22,7 +22,6 @@
 		09B657A52822A5C900D54A6C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657A42822A5C900D54A6C /* SettingsViewController.swift */; };
 		09B657A72822A5EC00D54A6C /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657A62822A5EC00D54A6C /* TabBarViewController.swift */; };
 		09B657A92822A62900D54A6C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657A82822A62900D54A6C /* PostViewController.swift */; };
-		09B657AB2822A63F00D54A6C /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657AA2822A63F00D54A6C /* ApiCaller.swift */; };
 		09B657AD2822A64E00D54A6C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657AC2822A64E00D54A6C /* StorageManager.swift */; };
 		09B657AF2822A66300D54A6C /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657AE2822A66300D54A6C /* DataBaseManager.swift */; };
 		09B657B12822A67200D54A6C /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B657B02822A67200D54A6C /* AuthenticationManager.swift */; };
@@ -49,7 +48,6 @@
 		09B657A42822A5C900D54A6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		09B657A62822A5EC00D54A6C /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		09B657A82822A62900D54A6C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		09B657AA2822A63F00D54A6C /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
 		09B657AC2822A64E00D54A6C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		09B657AE2822A66300D54A6C /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		09B657B02822A67200D54A6C /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 		09B657932822A4C800D54A6C /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				09B657AA2822A63F00D54A6C /* ApiCaller.swift */,
 				09B657AC2822A64E00D54A6C /* StorageManager.swift */,
 				09B657AE2822A66300D54A6C /* DataBaseManager.swift */,
 				09B657B02822A67200D54A6C /* AuthenticationManager.swift */,
@@ -353,7 +350,6 @@
 				09B657A32822A5BD00D54A6C /* SignUpViewController.swift in Sources */,
 				09B657A12822A5B000D54A6C /* SIgnInViewController.swift in Sources */,
 				09B657B12822A67200D54A6C /* AuthenticationManager.swift in Sources */,
-				09B657AB2822A63F00D54A6C /* ApiCaller.swift in Sources */,
 				09B6579B2822A57900D54A6C /* NotificationsViewController.swift in Sources */,
 				09B6579D2822A58800D54A6C /* ProfileViewController.swift in Sources */,
 				09B657AD2822A64E00D54A6C /* StorageManager.swift in Sources */,
