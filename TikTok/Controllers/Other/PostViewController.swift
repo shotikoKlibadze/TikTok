@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 protocol PostViewControllerDelegate : AnyObject {
     func postViewController(_ vc: PostViewController, didTapCommentButtonFor post: PostModel)
@@ -61,6 +62,7 @@ class PostViewController: UIViewController {
         return label
     }()
     
+    var player: AVPlayer?
     
     //MARK: -Initializer-
     
@@ -78,12 +80,14 @@ class PostViewController: UIViewController {
         let colors : [UIColor] = [.red, .green, .yellow, .orange, .blue, .systemRed, .systemPink]
         view.backgroundColor = colors.randomElement()
         
-        
+        configureVideo()
         setupButtons()
         setupDoubleTapToLike()
         view.addSubview(captionLabel)
         view.addSubview(profileButton)
         profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -117,6 +121,19 @@ class PostViewController: UIViewController {
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
         commentButton.addTarget(self, action: #selector(didTapComment), for: .touchUpInside)
         shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
+    }
+    
+    private func configureVideo() {
+        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else { return }
+        let url = URL(fileURLWithPath: path)
+        player = AVPlayer(url: url)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = view.bounds
+        playerLayer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(playerLayer)
+        player?.volume = 0
+        player?.play()
+        
     }
     
     @objc func didTapLike() {
