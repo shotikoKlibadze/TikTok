@@ -22,7 +22,6 @@ class TabBarViewController: UITabBarController {
         let notifiactions = NotificationsViewController()
         let profile = ProfileViewController()
         
-        home.title = "Home"
         explore.title = "Explore"
         notifiactions.title = "Notifiactions"
         profile.title = "Profile"
@@ -31,6 +30,10 @@ class TabBarViewController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: explore)
         let nav3 = UINavigationController(rootViewController: notifiactions)
         let nav4 = UINavigationController(rootViewController: profile)
+        
+        nav1.navigationBar.backgroundColor = .clear
+        nav1.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        nav1.navigationBar.shadowImage = UIImage()
         
         nav1.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "safari"), tag: 2)
@@ -41,7 +44,4 @@ class TabBarViewController: UITabBarController {
         setViewControllers([nav1, nav2, camera, nav3, nav4], animated: false)
     }
     
-
-    
-
 }
