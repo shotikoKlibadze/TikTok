@@ -20,6 +20,7 @@ extension UIView {
     
     var left : CGFloat {
         return frame.origin.x
+        
     }
     
     var right : CGFloat {
