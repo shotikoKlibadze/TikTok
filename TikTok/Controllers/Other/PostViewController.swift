@@ -64,6 +64,8 @@ class PostViewController: UIViewController {
     
     var player: AVPlayer?
     
+    private var playerdDidFinishObserver: NSObjectProtocol?
+    
     //MARK: -Initializer-
     
     init(model: PostModel) {
@@ -86,8 +88,6 @@ class PostViewController: UIViewController {
         view.addSubview(captionLabel)
         view.addSubview(profileButton)
         profileButton.addTarget(self, action: #selector(didTapProfileButton), for: .touchUpInside)
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -134,6 +134,18 @@ class PostViewController: UIViewController {
         player?.volume = 0
         player?.play()
         
+        guard let player = player else {
+            return
+        }
+
+        playerdDidFinishObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: player.currentItem,
+            queue: .main,
+            using: { _ in
+                player.seek(to: .zero)
+                player.play()
+            })
     }
     
     @objc func didTapLike() {
