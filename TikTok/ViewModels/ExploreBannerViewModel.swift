@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct ExploreBannerViewModel {
-    let image: UIImageView?
+    let image: UIImage?
     let title: String
     let handler: (() -> Void)
 }

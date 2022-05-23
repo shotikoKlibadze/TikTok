@@ -13,7 +13,7 @@ enum ExploreSectonType : CaseIterable {
     case trendingPosts
     case users
     case trendingHashtags
-    case recomended
+   // case recomended
     case popular
     case new
     
@@ -27,8 +27,8 @@ enum ExploreSectonType : CaseIterable {
             return "Popular Creators"
         case .trendingHashtags:
             return "Hashtags"
-        case .recomended:
-            return "Recomended"
+//        case .recomended:
+//            return "Recomended"
         case .popular:
             return "Popular"
         case .new:

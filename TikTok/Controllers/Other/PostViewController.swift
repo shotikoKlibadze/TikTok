@@ -79,9 +79,7 @@ class PostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let colors : [UIColor] = [.red, .green, .yellow, .orange, .blue, .systemRed, .systemPink]
-        view.backgroundColor = colors.randomElement()
-        
+       
         configureVideo()
         setupButtons()
         setupDoubleTapToLike()
