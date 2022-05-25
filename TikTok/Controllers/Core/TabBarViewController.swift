@@ -8,11 +8,34 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
+    
+    var signInPresented = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupControllers()
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !signInPresented {
+            presentSignInIfNeeded()
+        }
+       
+    }
+    
+    private func presentSignInIfNeeded() {
+        if !AuthManager.shared.isSignedIn {
+            signInPresented = true
+            let vc = SIgnInViewController()
+            vc.completion = { [weak self] in
+                self?.signInPresented = false
+            }
+            let navVC = UINavigationController(rootViewController: vc)
+            navVC.modalPresentationStyle = .fullScreen
+            present(navVC, animated: false)
+        }
     }
     
     private func setupControllers() {
@@ -22,7 +45,6 @@ class TabBarViewController: UITabBarController {
         let notifiactions = NotificationsViewController()
         let profile = ProfileViewController(user: User(userName: "", profilePicgureURL: nil, identifier: ""))
         
-       
         notifiactions.title = "Notifiactions"
         profile.title = "Profile"
         

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09097AAD283E4CDD0039AE93 /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09097AAC283E4CDC0039AE93 /* AuthField.swift */; };
+		09097AAF283E4CF20039AE93 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09097AAE283E4CF20039AE93 /* AuthButton.swift */; };
 		09B6577A28229F8900D54A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6577928229F8900D54A6C /* AppDelegate.swift */; };
 		09B6577C28229F8900D54A6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6577B28229F8900D54A6C /* SceneDelegate.swift */; };
 		09B6577E28229F8900D54A6C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6577D28229F8900D54A6C /* HomeViewController.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09097AAC283E4CDC0039AE93 /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
+		09097AAE283E4CF20039AE93 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		09B6577628229F8900D54A6C /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09B6577928229F8900D54A6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09B6577B28229F8900D54A6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09097A97283BC2080039AE93 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				09B657A02822A5B000D54A6C /* SIgnInViewController.swift */,
+				09B657A22822A5BD00D54A6C /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		09097AB1283E4FEF0039AE93 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				09B657C3282420CC00D54A6C /* CommentTableViewCell.swift */,
+				09DA6B51283256380025DBD4 /* ExploreBannerCollectionViewCell.swift */,
+				09DA6B53283256450025DBD4 /* ExplorePostCollectionViewCell.swift */,
+				09DA6B55283256500025DBD4 /* ExploreUserCollectionViewCell.swift */,
+				09DA6B57283256630025DBD4 /* ExploreHashtagCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		09B6576D28229F8900D54A6C = {
 			isa = PBXGroup;
 			children = (
@@ -187,11 +212,9 @@
 		09B657902822A4AA00D54A6C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				09B657C3282420CC00D54A6C /* CommentTableViewCell.swift */,
-				09DA6B51283256380025DBD4 /* ExploreBannerCollectionViewCell.swift */,
-				09DA6B53283256450025DBD4 /* ExplorePostCollectionViewCell.swift */,
-				09DA6B55283256500025DBD4 /* ExploreUserCollectionViewCell.swift */,
-				09DA6B57283256630025DBD4 /* ExploreHashtagCollectionViewCell.swift */,
+				09097AB1283E4FEF0039AE93 /* Cells */,
+				09097AAC283E4CDC0039AE93 /* AuthField.swift */,
+				09097AAE283E4CF20039AE93 /* AuthButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,9 +269,8 @@
 		09B657952822A54600D54A6C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				09097A97283BC2080039AE93 /* Authentication */,
 				09B6579E2822A59B00D54A6C /* UserListViewController.swift */,
-				09B657A02822A5B000D54A6C /* SIgnInViewController.swift */,
-				09B657A22822A5BD00D54A6C /* SignUpViewController.swift */,
 				09B657A42822A5C900D54A6C /* SettingsViewController.swift */,
 				09B657A82822A62900D54A6C /* PostViewController.swift */,
 				09B657BC28240A3300D54A6C /* CommentsViewController.swift */,
@@ -424,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09B657B32822A68100D54A6C /* HapticsManager.swift in Sources */,
+				09097AAF283E4CF20039AE93 /* AuthButton.swift in Sources */,
 				09B657B92822CAC300D54A6C /* Extensions.swift in Sources */,
 				09B657AF2822A66300D54A6C /* DataBaseManager.swift in Sources */,
 				09DA6AFF282E79880025DBD4 /* ExploreSection.swift in Sources */,
@@ -443,6 +466,7 @@
 				09DA6B01282E799A0025DBD4 /* ExploreCell.swift in Sources */,
 				09B657BD28240A3300D54A6C /* CommentsViewController.swift in Sources */,
 				09B657A72822A5EC00D54A6C /* TabBarViewController.swift in Sources */,
+				09097AAD283E4CDD0039AE93 /* AuthField.swift in Sources */,
 				09B657C228241DA900D54A6C /* User.swift in Sources */,
 				09DA6B0B282E7C870025DBD4 /* ExplorePostViewModel.swift in Sources */,
 				09B6577E28229F8900D54A6C /* HomeViewController.swift in Sources */,

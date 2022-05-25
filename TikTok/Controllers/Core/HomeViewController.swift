@@ -48,6 +48,7 @@ class HomeViewController: UIViewController {
         horizontalScrollView.delegate = self
         setupFeed()
         horizontalScrollView.contentOffset = CGPoint(x: view.width, y: 0)
+        horizontalScrollView.contentInsetAdjustmentBehavior = .never
         setupHeaderButtons()
     }
     
