@@ -103,8 +103,16 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        AuthManager.shared.signUp(with: username, email: email, password: password) { success in
-            
+        AuthManager.shared.signUp(with: username, email: email, password: password) { [weak self] success in
+            if success {
+                self?.dismiss(animated: true)
+            } else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Sign Up Failed", message: "Something went wrong, Try again later", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                    self?.present(alert, animated: true)
+                }
+            }
         }
         
     }

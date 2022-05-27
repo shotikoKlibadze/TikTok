@@ -96,11 +96,18 @@ class SIgnInViewController: UIViewController {
             present(alert, animated: true)
             return
         }
-        AuthManager.shared.signIn(with: email, password: password) { loggedIn in
-            if loggedIn {
-                //sign in
-            } else {
-                //show error
+        
+        AuthManager.shared.signIn(with: email, password: password) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let email):
+                    self?.dismiss(animated: true)
+                case .failure(_):
+                    let alert = UIAlertController(title: "Sign In Failed", message: "Pleace check your email and password", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                    self?.present(alert, animated: true)
+                    self?.passwordField.text = nil
+                }
             }
         }
     }

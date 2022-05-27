@@ -16,6 +16,29 @@ final class DatabaseManager {
     
     private init () {}
     
+    public func insertUser(email: String, username: String, completion: @escaping (Bool) -> Void) {
+        // get current users key
+        database.child("users").observeSingleEvent(of: .value) { [weak self] snapShot in
+            guard var usersDict = snapShot.value as? [String: Any] else {
+                //Create roosers root
+                self?.database.child("users").setValue(
+                    [
+                        username: [
+                            "email" : email
+                        ]
+                    ]) { error, _ in
+                        completion(error == nil)
+                    }
+                return
+            }
+            //save new users
+            usersDict[username] = ["email" : email]
+            self?.database.child("users").setValue(usersDict) { error, _ in
+                completion(error == nil)
+            }
+        }
+    }
+    
     public func getAllUsers() {
         
     }
