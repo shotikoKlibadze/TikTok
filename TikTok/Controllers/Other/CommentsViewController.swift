@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 protocol CommentsViewControllerDelegate: AnyObject {
     func didTapCloseForComments(with viewController: CommentsViewController)
 }

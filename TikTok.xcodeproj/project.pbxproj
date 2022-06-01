@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09077C85284156A60021F1F0 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09077C84284156A60021F1F0 /* RecordButton.swift */; };
+		09077C87284160270021F1F0 /* CaptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09077C86284160270021F1F0 /* CaptionViewController.swift */; };
 		09097AAD283E4CDD0039AE93 /* AuthField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09097AAC283E4CDC0039AE93 /* AuthField.swift */; };
 		09097AAF283E4CF20039AE93 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09097AAE283E4CF20039AE93 /* AuthButton.swift */; };
 		09B6577A28229F8900D54A6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B6577928229F8900D54A6C /* AppDelegate.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09077C84284156A60021F1F0 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		09077C86284160270021F1F0 /* CaptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionViewController.swift; sourceTree = "<group>"; };
 		09097AAC283E4CDC0039AE93 /* AuthField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthField.swift; sourceTree = "<group>"; };
 		09097AAE283E4CF20039AE93 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		09B6577628229F8900D54A6C /* TikTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TikTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +219,7 @@
 				09097AB1283E4FEF0039AE93 /* Cells */,
 				09097AAC283E4CDC0039AE93 /* AuthField.swift */,
 				09097AAE283E4CF20039AE93 /* AuthButton.swift */,
+				09077C84284156A60021F1F0 /* RecordButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				09B657A42822A5C900D54A6C /* SettingsViewController.swift */,
 				09B657A82822A62900D54A6C /* PostViewController.swift */,
 				09B657BC28240A3300D54A6C /* CommentsViewController.swift */,
+				09077C86284160270021F1F0 /* CaptionViewController.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -450,11 +456,13 @@
 				09B657B92822CAC300D54A6C /* Extensions.swift in Sources */,
 				09B657AF2822A66300D54A6C /* DataBaseManager.swift in Sources */,
 				09DA6AFF282E79880025DBD4 /* ExploreSection.swift in Sources */,
+				09077C85284156A60021F1F0 /* RecordButton.swift in Sources */,
 				09DA6B11282E9CB80025DBD4 /* ExploreManager.swift in Sources */,
 				09B657C4282420CC00D54A6C /* CommentTableViewCell.swift in Sources */,
 				09B657972822A56200D54A6C /* ExploreViewController.swift in Sources */,
 				09B6579F2822A59B00D54A6C /* UserListViewController.swift in Sources */,
 				09DA6B52283256380025DBD4 /* ExploreBannerCollectionViewCell.swift in Sources */,
+				09077C87284160270021F1F0 /* CaptionViewController.swift in Sources */,
 				09DA6B09282E7C700025DBD4 /* ExploreHashtagViewModel.swift in Sources */,
 				09B657A52822A5C900D54A6C /* SettingsViewController.swift in Sources */,
 				09B657A92822A62900D54A6C /* PostViewController.swift in Sources */,

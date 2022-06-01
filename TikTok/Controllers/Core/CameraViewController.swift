@@ -29,13 +29,19 @@ class CameraViewController: UIViewController {
         return view
     }()
     
+    private let receordButton = RecordButton()
+    private var previewLayer: AVPlayerLayer?
+    private var recordedVideoURL: URL?
+    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(cameraView)
+        view.addSubview(receordButton)
         view.backgroundColor = .systemBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
+        receordButton.addTarget(self, action: #selector(didTapRecord), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,18 +52,41 @@ class CameraViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         cameraView.frame = view.bounds
+        let size: CGFloat = 70
+        receordButton.frame = CGRect(x: (view.width - size) / 2, y: view.height - view.safeAreaInsets.bottom - size, width: size, height: size)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tabBarController?.tabBar.isHidden = true
-       
+    }
+    
+    @objc func didTapRecord() {
+        if captureOutput.isRecording {
+            captureOutput.stopRecording()
+            receordButton.toggle(for: .notRecording)
+        } else {
+            guard var url = FileManager.default.urls(
+                for: .documentDirectory,
+                in: .userDomainMask).first else { return }
+            receordButton.toggle(for: .recording)
+            url.appendPathComponent("video.mov")
+            try? FileManager.default.removeItem(at: url)
+            captureOutput.startRecording(to: url, recordingDelegate: self)
+        }
     }
     
     @objc func didTapClose() {
-        captureSession.stopRunning()
-        tabBarController?.tabBar.isHidden = false
-        tabBarController?.selectedIndex = 0
+        navigationItem.rightBarButtonItem = nil
+        receordButton.isHidden = false
+        if previewLayer != nil {
+            previewLayer?.removeFromSuperlayer()
+            previewLayer = nil
+        } else {
+            captureSession.stopRunning()
+            tabBarController?.tabBar.isHidden = false
+            tabBarController?.selectedIndex = 0
+        }
     }
     
     func setUpCamera() {
@@ -92,16 +121,38 @@ class CameraViewController: UIViewController {
         //enable camera start
         captureSession.startRunning()
     }
-
-  
- 
-
+    
 }
 
 extension CameraViewController : AVCaptureFileOutputRecordingDelegate {
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        guard error == nil else { return }
+        guard error == nil else {
+            let alert = UIAlertController(title: "Opps", message: "Something went wrong", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            present(alert, animated: true)
+            return
+        }
         
-        print("FiniShed recording to url : \(outputFileURL.absoluteString)" )
+        recordedVideoURL = outputFileURL
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(didTapNext))
+        
+        let player = AVPlayer(url: outputFileURL)
+        previewLayer = AVPlayerLayer(player: player)
+        previewLayer?.videoGravity = .resizeAspectFill
+        previewLayer?.frame = cameraView.bounds
+        guard let previewLayer = previewLayer else {
+            return
+        }
+        receordButton.isHidden = true
+        cameraView.layer.addSublayer(previewLayer)
+        previewLayer.player?.play()
+    }
+    
+    @objc func didTapNext() {
+        guard let url = recordedVideoURL else {
+            return
+        }
+        let vc = CaptionViewController(videoURL: url)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

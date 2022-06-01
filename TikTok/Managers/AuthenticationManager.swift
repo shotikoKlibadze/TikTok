@@ -38,10 +38,15 @@ final class AuthManager {
                 }
                 return
             }
+            DatabaseManager.shared.getUsername(for: email) { username in
+                if let username = username {
+                    UserDefaults.standard.set(username, forKey: "username")
+                    print("gotUserName \(username)")
+                }
+            }
             //succesfull sign in
             completion(.success(email))
         }
-        
     }
     
     public func signUp(with userName: String, email: String, password: String, completion: @escaping (Bool) -> Void) {
@@ -51,12 +56,11 @@ final class AuthManager {
                 completion(false)
                 return
             }
+            UserDefaults.standard.set(userName, forKey: "username")
             DatabaseManager.shared.insertUser(email: email, username: userName, completion: completion)
         }
     }
-    
-    
-    
+
     public func signOut(completion: (Bool) -> Void) {
         do {
             try Auth.auth().signOut()
@@ -65,8 +69,5 @@ final class AuthManager {
             print(error)
             completion(false)
         }
-       
-    }
-    
-    
+    }       
 }
