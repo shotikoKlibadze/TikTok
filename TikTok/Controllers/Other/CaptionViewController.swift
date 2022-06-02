@@ -12,6 +12,15 @@ class CaptionViewController: UIViewController {
     
     let videoURL : URL
     
+    private let captionTextView : UITextView = {
+        let textView = UITextView()
+        textView.contentInset = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        textView.backgroundColor = .secondarySystemBackground
+        textView.layer.cornerRadius = 8
+        textView.layer.masksToBounds = true
+        return textView
+    }()
+    
     init(videoURL: URL) {
         self.videoURL = videoURL
         super.init(nibName: nil, bundle: nil)
@@ -25,13 +34,23 @@ class CaptionViewController: UIViewController {
         super.viewDidLoad()
         title = "Add Caption"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: .done, target: self, action: #selector(didTapPost))
+        view.addSubview(captionTextView)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        captionTextView.frame = CGRect(x: 5, y: view.safeAreaInsets.top + 5 , width: view.width - 10, height: 150).integral
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        captionTextView.becomeFirstResponder()
+    }
     @objc func didTapPost() {
+        
+        captionTextView.resignFirstResponder()
+        let caption = captionTextView.text ?? ""
+        
         ProgressHUD.show("Posting")
         //Generate video name
         let videoName = StorageManager.shared.generateVideoName()
@@ -40,7 +59,7 @@ class CaptionViewController: UIViewController {
             DispatchQueue.main.async {
                 if success {
                     //Update Database
-                    DatabaseManager.shared.insertPost(fileName: videoName) { databaseUpdated in
+                    DatabaseManager.shared.insertPost(fileName: videoName, caption: caption) { databaseUpdated in
                         if databaseUpdated {
                             HapticsManager.shared.vibrate(for: .success)
                             ProgressHUD.dismiss()
